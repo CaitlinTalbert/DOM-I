@@ -43,48 +43,62 @@ const siteContent = { // DO NOT CHANGE THIS OBJECT
 
 console.log('project wired!')
 
-    const navbar = document.querySelector('nav'); 
-    navbar.style.fontStyle = "italic"; 
-    const nav1 = document.querySelector('nav a:nth-of-type(1)'); 
-    const nav2 = document.querySelector('nav-item-2'); 
-    const nav3 = document.querySelector('nav-item-3'); 
-    const nav4 = document.querySelector('nav-item-4'); 
-    const nav5 = document.querySelector('nav-item-5'); 
-    const nav6 = document.querySelector('nav-item-6'); 
+    //navigation 
+    const navLinks = document.querySelectorAll("nav a"); 
+    const linkTexts = Object.values(siteContent.nav); 
+    console.log(linkTexts); 
+    navLinks.forEach(function(link, idx) {
+      link.textContent = linkTexts[idx];  
+    });
 
-    nav1.textContent = siteContent["nav"]["nav-item-1"]; 
-    nav2.textContent = siteContent["nav"]["nav-item-2"]; 
-    nav3.textContent = siteContent["nav"]["nav-item-3"]; 
-    nav4.textContent = siteContent["nav"]["nav-item-4"]; 
-    nav5.textContent = siteContent["nav"]["nav-item-5"]; 
-    nav6.textContent = siteContent["nav"]["nav-item-6"]; 
-
-
-    const companyLogo = document.querySelector('#logo-img'); 
-    companyLogo = siteContent["images"]["logo-img"]; 
-
+    //cta 
+    const buttonText = document.querySelector('button'); 
+    buttonText.innerText = siteContent["cta"]["button"];
 
     const ctaText = document.querySelector('h1'); 
-    ctaText.textContent = sitecontent['cta']['h1']; 
+    ctaText.textContent = siteContent['cta']['h1']; 
 
-    const buttonText = document.querySelector('button'); 
-    buttonText.innerText = siteContent["cta"]["button"]; 
+    //images 
+    const headerImage = document.querySelector("header .logo"); 
+    headerImage.src = siteContent["images"]["logo-img"]; 
+
+    const ctaImg = document.querySelector('#cta-img'); 
+    ctaImg.src = "mocks/img/cta.png"; 
+
+    const accentImg = document.querySelector('.middle-img'); 
+    accentImg.src = siteContent.images['accent-img']; 
 
 
 
-    /*const siteContent = {
-      "contact": {
-      "contact-h4": "Contact",
-      "address": "123 Way 456 Street Somewhere, USA",
-      "phone": "1 (888) 888-8888",
-      "email": "sales@greatidea.io",
-      }
-    }; 
+    //main content - top
+    /*const featureTitle = document.querySelector('.main-content .top-content .text-content h4'); 
+    featureTitle.textContent = siteContent['main-content']['features-h4']; 
 
-    const contactH4 = document.querySelector('.contactH4'); 
-    const address = document.querySelector(".address"); 
-    const phone = document.querySelector(".phone"); 
-    const email = document.querySelector(".email"); 
+    const featuresContentText = document.querySelector('.main-content .top-content .text-content p'); 
+    featuresContentText.textContent = siteContent['main-content']['features-content']; 
+    
+    const aboutTitle = document.querySelector('.main-content .top-content .text-content h4'); 
+    aboutTitle.textContent = siteContent['main-content']['about-h4']; 
 
-    contactH4.textContent = data["contact"]["contactH4"]; 
-    address.textContent = data["contact"]["address"]; */
+    const about = document.querySelector('.main-content .top-content .text-content p'); */
+
+
+    const topContent = document.querySelector('.top-content')
+    topContent.children[0].children[0].textContent = siteContent['main-content']['features-h4']; 
+    topContent.children[0].children[1].textContent = siteContent['main-content']['features-content'];
+    topContent.children[1].children[0].textContent = siteContent['main-content']['about-h4'];
+    topContent.children[1].children[1].textContent = siteContent['main-content']['about-content'];
+
+
+    //contact
+
+    const contact = document.querySelector('section.contact'); 
+    contact.children[0].textContent = siteContent.contact['contact-h4']; 
+    contact.children[1].textContent = siteContent.contact['address']; 
+    contact.children[2].textContent = siteContent.contact['phone'];
+    contact.children[3].textContent = siteContent.contact['email'];
+  
+    //footer 
+    const footerLink = document.querySelector("footer a"); 
+    footerLink.textContent = siteContent.footer.copyright;
+    footerLink.classList.add('bold'); 
